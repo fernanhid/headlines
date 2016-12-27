@@ -5,6 +5,7 @@ import json
 import urllib2
 import urllib
 import datetime
+import os
 
 
 app = Flask(__name__)
@@ -103,4 +104,6 @@ def get_value_with_fallback(key):
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+	app.debug = True
+	port = int(os.environ.get("PORT", 5000))
+	app.run(host='0.0.0.0', port=port)
